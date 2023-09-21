@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State var entries = [WikipediaSearchResult.Query.SearchResult]()
     @State var articleDescriptions = [String: String]()
     @State var searchText = ""
@@ -67,6 +68,9 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
+                Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
+                    .resizable()
+                    .scaledToFill()
                 TextField(
                     "Enter text to be searched", text: $searchText,
                     onCommit: {
@@ -102,7 +106,6 @@ struct ContentView: View {
                     }
                 }
             }
-            .navigationBarTitle("Wikipedia")
             .onChange(of: searchText) { newValue in
                 Task {
                     await getWikipediaData()
@@ -113,6 +116,7 @@ struct ContentView: View {
 }
 
 struct WikipediaDetailView: View {
+    @Environment(\.colorScheme) var colorScheme
     let entry: WikipediaSearchResult.Query.SearchResult
     let description: String
     
@@ -122,10 +126,15 @@ struct WikipediaDetailView: View {
                 Text(entry.title)
                     .font(.largeTitle)
                     .fontWeight(.bold)
-                    .padding()
+                    .padding(10)
                 Text(description)
                     .padding()
             }
+        }.toolbar {
+            Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 50, height: 50)
         }
     }
 }
