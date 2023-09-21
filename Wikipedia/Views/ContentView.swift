@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var entries = [WikipediaSearchResult.Query.SearchResult]()
+    @State var entries = [SearchResult]()
     @State var articleDescriptions = [String: String]()
     @State var searchText = ""
     
@@ -38,7 +38,7 @@ struct ContentView: View {
             
             // All the 5 entries with respect to the keyword provided in the Text Field is stored in an array with their titles
             entries = result.query.search.map { searchResult in
-                return WikipediaSearchResult.Query.SearchResult(
+                return SearchResult(
                     title: searchResult.title)
             }
             
@@ -117,7 +117,7 @@ struct ContentView: View {
 
 struct WikipediaDetailView: View {
     @Environment(\.colorScheme) var colorScheme
-    let entry: WikipediaSearchResult.Query.SearchResult
+    let entry: SearchResult
     let description: String
     
     var body: some View {
