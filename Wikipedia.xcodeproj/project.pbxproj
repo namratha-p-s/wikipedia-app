@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		524BC7A02AC4CD4D00DE46FD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */; };
+		524BC7A32AC4DDD500DE46FD /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC7A22AC4DDD500DE46FD /* RequestService.swift */; };
 		5294C66C2ABCCE4600D3B25E /* WikipediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C66B2ABCCE4600D3B25E /* WikipediaApp.swift */; };
 		5294C66E2ABCCE4600D3B25E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C66D2ABCCE4600D3B25E /* ContentView.swift */; };
 		5294C6702ABCCE4800D3B25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5294C66F2ABCCE4800D3B25E /* Assets.xcassets */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		524BC7A22AC4DDD500DE46FD /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
 		5294C6682ABCCE4600D3B25E /* Wikipedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wikipedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5294C66B2ABCCE4600D3B25E /* WikipediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaApp.swift; sourceTree = "<group>"; };
 		5294C66D2ABCCE4600D3B25E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +42,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		524BC79C2AC4C9DD00DE46FD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		524BC7A12AC4D41A00DE46FD /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				524BC7A22AC4DDD500DE46FD /* RequestService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		5294C65F2ABCCE4600D3B25E = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +77,8 @@
 		5294C66A2ABCCE4600D3B25E /* Wikipedia */ = {
 			isa = PBXGroup;
 			children = (
+				524BC7A12AC4D41A00DE46FD /* Services */,
+				524BC79C2AC4C9DD00DE46FD /* ViewModel */,
 				5294C67A2ABCCE5A00D3B25E /* Models */,
 				5294C6792ABCCE5000D3B25E /* Views */,
 				5294C66B2ABCCE4600D3B25E /* WikipediaApp.swift */,
@@ -166,7 +188,9 @@
 				5294C66E2ABCCE4600D3B25E /* ContentView.swift in Sources */,
 				52B6BBB32AC1E4670032AC00 /* WikipediaDetailView.swift in Sources */,
 				5294C67C2ABCCE7800D3B25E /* WikipediaSearchResult.swift in Sources */,
+				524BC7A32AC4DDD500DE46FD /* RequestService.swift in Sources */,
 				5294C66C2ABCCE4600D3B25E /* WikipediaApp.swift in Sources */,
+				524BC7A02AC4CD4D00DE46FD /* SearchViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,70 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
-    @State var entries = [SearchResult]()
-    @State var articleDescriptions = [String: String]()
-    @State var searchText = ""
     
-    func getWikipediaData() async {
-        _ = Task { () -> Void in
-            do {
-                // Text field empty implies to remove all the entries
-                if searchText.isEmpty {
-                    entries.removeAll()
-                    articleDescriptions.removeAll()
-                    return
-                }
-                
-                // Text field can have spaces, hence adding % for spaces
-                let encodedSearchText =
-                searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                
-                // Retreiving only the top 5 entries of the API response
-                let url = URL(
-                    string:
-                        "https://en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch=\(encodedSearchText)&srlimit=5"
-                )!
-                
-                let (data, _) = try await URLSession.shared.data(from: url)
-                
-                // In order to invalidate old API requests
-                if Task.isCancelled {
-                    entries.removeAll()
-                    articleDescriptions.removeAll()
-                    return
-                }
-                
-                let result = try JSONDecoder().decode(WikipediaSearchResult.self, from: data)
-                
-                // All the 5 entries with respect to the keyword provided in the Text Field is stored in an array with their titles
-                entries = result.query.search.map { searchResult in
-                    return SearchResult(
-                        title: searchResult.title)
-                }
-                
-                // To retrieve the description of the top 5 entries, we need to call another Wikipedia API
-                for entry in entries {
-                    let articleTitle = entry.title.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-                    
-                    let articleURLString =
-                    "https://en.wikipedia.org/w/api.php?action=query&format=json&prop=extracts&exintro=1&explaintext=1&titles=\(articleTitle)"
-                    
-                    let articleURL = URL(string: articleURLString)!
-                    
-                    let (articleData, _) = try await URLSession.shared.data(from: articleURL)
-                    
-                    let articleResult = try JSONDecoder().decode(WikipediaArticle.self, from: articleData)
-                    
-                    // Store the description of a particular entry to its respective title
-                    if let page = articleResult.query.pages.first?.value {
-                        articleDescriptions[entry.title] = page.extract
-                    }
-                }
-            } catch {
-                print("Error: \(error.localizedDescription)")
-            }
-        }
-    }
+    @StateObject var searchViewModel = SearchViewModel()
+    
+    @State var searchText = ""
     
     var body: some View {
         NavigationView {
@@ -84,7 +24,7 @@ struct ContentView: View {
                     "Enter text to be searched", text: $searchText,
                     onCommit: {
                         Task {
-                            await getWikipediaData()
+                            await searchViewModel.getWikiRequest(for: searchText)
                         }
                     }
                 )
@@ -94,19 +34,19 @@ struct ContentView: View {
                 HStack {
                     Button("Search") {
                         Task {
-                            await getWikipediaData()
+                            await searchViewModel.getWikiRequest(for: searchText)
                         }
                     }
                     Button("Clear") {
                         searchText = ""
-                        entries.removeAll()
+                        searchViewModel.entries.removeAll()
                     }
                 }
                 
-                List(entries) { entry in
+                List(searchViewModel.entries) { entry in
                     NavigationLink(
                         destination: WikipediaDetailView(
-                            entry: entry, description: articleDescriptions[entry.title] ?? "")
+                            entry: entry, description: searchViewModel.articleDescriptions[entry.title] ?? "")
                     ) {
                         VStack(alignment: .leading) {
                             Text(entry.title)
@@ -117,7 +57,7 @@ struct ContentView: View {
             }
             .onChange(of: searchText) { newValue in
                 Task {
-                    await getWikipediaData()
+                    await searchViewModel.getWikiRequest(for: searchText)
                 }
             }
         }
