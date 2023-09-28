@@ -8,16 +8,21 @@
 import Foundation
 
 // Struct for the desricption of a particular Search Result API
-struct WikipediaArticle: Codable {
-    var query: ArticleQuery
+struct WikipediaQueryPage: Codable {
+    var query: PageQuery
 }
 
-struct ArticleQuery: Codable {
+struct PageQuery: Codable {
     var pages: [String: Page]
 }
 
-struct Page: Codable {
+struct Page: Identifiable, Codable {
+    var id: Int { return UUID().hashValue }
     var title: String
     var extract: String
+    var thumbnail: Thumbnail?
 }
 
+struct Thumbnail: Codable {
+    var source: String
+}

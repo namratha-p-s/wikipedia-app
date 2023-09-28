@@ -9,18 +9,35 @@ import SwiftUI
 
 struct WikipediaDetailView: View {
     @Environment(\.colorScheme) var colorScheme
-    let entry: SearchResult
-    let description: String
+    
+    @StateObject var detailViewModel = DetailViewModel()
+    
+    @State var entry: SearchResult
     
     var body: some View {
         ScrollView {
             VStack {
-                Text(entry.title)
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(10)
-                Text(description)
-                    .padding()
+                if detailViewModel.isLoaded {
+                    if detailViewModel.articleDescriptions?.thumbnail != nil {
+                        AsyncImage(url: URL(string: detailViewModel.articleDescriptions!.thumbnail!.source))
+                    } else {
+                        Image(systemName: "photo")
+                    }
+                    
+                    Text(detailViewModel.articleDescriptions!.title)
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(10)
+                    
+                    Text(detailViewModel.articleDescriptions!.extract)
+                        .padding()
+                }
+                else {
+                    ProgressView()
+                }
+            }
+            .onAppear {
+                detailViewModel.getWikiDetailsRequest(entry: entry)
             }
         }.toolbar {
             Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
@@ -33,6 +50,7 @@ struct WikipediaDetailView: View {
 
 struct WikipediaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        WikipediaDetailView(entry: SearchResult(title: "Sample"), description: "")
+        WikipediaDetailView(
+            entry: SearchResult(title: "Sample text"))
     }
 }

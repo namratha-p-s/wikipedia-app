@@ -7,27 +7,29 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		524BC7A02AC4CD4D00DE46FD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */; };
+		524BC7A02AC4CD4D00DE46FD /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC79F2AC4CD4D00DE46FD /* ContentViewModel.swift */; };
 		524BC7A32AC4DDD500DE46FD /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC7A22AC4DDD500DE46FD /* RequestService.swift */; };
+		524BC7AC2AC558D200DE46FD /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 524BC7AB2AC558D200DE46FD /* DetailViewModel.swift */; };
 		5294C66C2ABCCE4600D3B25E /* WikipediaApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C66B2ABCCE4600D3B25E /* WikipediaApp.swift */; };
 		5294C66E2ABCCE4600D3B25E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C66D2ABCCE4600D3B25E /* ContentView.swift */; };
 		5294C6702ABCCE4800D3B25E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5294C66F2ABCCE4800D3B25E /* Assets.xcassets */; };
 		5294C6732ABCCE4800D3B25E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5294C6722ABCCE4800D3B25E /* Preview Assets.xcassets */; };
-		5294C67C2ABCCE7800D3B25E /* WikipediaSearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C67B2ABCCE7800D3B25E /* WikipediaSearchResult.swift */; };
-		5294C67E2ABCCE9600D3B25E /* WikipediaArticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C67D2ABCCE9600D3B25E /* WikipediaArticle.swift */; };
+		5294C67C2ABCCE7800D3B25E /* WikipediaQuerySearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C67B2ABCCE7800D3B25E /* WikipediaQuerySearch.swift */; };
+		5294C67E2ABCCE9600D3B25E /* WikipediaQueryPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5294C67D2ABCCE9600D3B25E /* WikipediaQueryPage.swift */; };
 		52B6BBB32AC1E4670032AC00 /* WikipediaDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6BBB22AC1E4670032AC00 /* WikipediaDetailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		524BC79F2AC4CD4D00DE46FD /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		524BC7A22AC4DDD500DE46FD /* RequestService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
+		524BC7AB2AC558D200DE46FD /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		5294C6682ABCCE4600D3B25E /* Wikipedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Wikipedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5294C66B2ABCCE4600D3B25E /* WikipediaApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaApp.swift; sourceTree = "<group>"; };
 		5294C66D2ABCCE4600D3B25E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5294C66F2ABCCE4800D3B25E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5294C6722ABCCE4800D3B25E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		5294C67B2ABCCE7800D3B25E /* WikipediaSearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaSearchResult.swift; sourceTree = "<group>"; };
-		5294C67D2ABCCE9600D3B25E /* WikipediaArticle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaArticle.swift; sourceTree = "<group>"; };
+		5294C67B2ABCCE7800D3B25E /* WikipediaQuerySearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaQuerySearch.swift; sourceTree = "<group>"; };
+		5294C67D2ABCCE9600D3B25E /* WikipediaQueryPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaQueryPage.swift; sourceTree = "<group>"; };
 		52B6BBB22AC1E4670032AC00 /* WikipediaDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikipediaDetailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -45,7 +47,8 @@
 		524BC79C2AC4C9DD00DE46FD /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				524BC79F2AC4CD4D00DE46FD /* SearchViewModel.swift */,
+				524BC79F2AC4CD4D00DE46FD /* ContentViewModel.swift */,
+				524BC7AB2AC558D200DE46FD /* DetailViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -108,8 +111,8 @@
 		5294C67A2ABCCE5A00D3B25E /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				5294C67B2ABCCE7800D3B25E /* WikipediaSearchResult.swift */,
-				5294C67D2ABCCE9600D3B25E /* WikipediaArticle.swift */,
+				5294C67B2ABCCE7800D3B25E /* WikipediaQuerySearch.swift */,
+				5294C67D2ABCCE9600D3B25E /* WikipediaQueryPage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -184,13 +187,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5294C67E2ABCCE9600D3B25E /* WikipediaArticle.swift in Sources */,
+				5294C67E2ABCCE9600D3B25E /* WikipediaQueryPage.swift in Sources */,
 				5294C66E2ABCCE4600D3B25E /* ContentView.swift in Sources */,
 				52B6BBB32AC1E4670032AC00 /* WikipediaDetailView.swift in Sources */,
-				5294C67C2ABCCE7800D3B25E /* WikipediaSearchResult.swift in Sources */,
+				5294C67C2ABCCE7800D3B25E /* WikipediaQuerySearch.swift in Sources */,
+				524BC7AC2AC558D200DE46FD /* DetailViewModel.swift in Sources */,
 				524BC7A32AC4DDD500DE46FD /* RequestService.swift in Sources */,
 				5294C66C2ABCCE4600D3B25E /* WikipediaApp.swift in Sources */,
-				524BC7A02AC4CD4D00DE46FD /* SearchViewModel.swift in Sources */,
+				524BC7A02AC4CD4D00DE46FD /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

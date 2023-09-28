@@ -10,8 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @StateObject var searchViewModel = SearchViewModel()
-    
+    @StateObject var searchViewModel = ContentViewModel()
     @State var searchText = ""
     
     var body: some View {
@@ -20,22 +19,18 @@ struct ContentView: View {
                 Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
                     .resizable()
                     .scaledToFill()
+                
                 TextField(
                     "Enter text to be searched", text: $searchText,
                     onCommit: {
-                        Task {
-                            await searchViewModel.getWikiRequest(for: searchText)
-                        }
+                        searchViewModel.getWikiRequest(for: searchText)
                     }
-                )
-                .textFieldStyle(RoundedBorderTextFieldStyle())
-                .padding()
+                ).textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding()
                 
                 HStack {
                     Button("Search") {
-                        Task {
-                            await searchViewModel.getWikiRequest(for: searchText)
-                        }
+                        searchViewModel.getWikiRequest(for: searchText)
                     }
                     Button("Clear") {
                         searchText = ""
@@ -45,8 +40,7 @@ struct ContentView: View {
                 
                 List(searchViewModel.entries) { entry in
                     NavigationLink(
-                        destination: WikipediaDetailView(
-                            entry: entry, description: searchViewModel.articleDescriptions[entry.title] ?? "")
+                        destination: WikipediaDetailView(entry: entry)
                     ) {
                         VStack(alignment: .leading) {
                             Text(entry.title)
@@ -56,9 +50,7 @@ struct ContentView: View {
                 }
             }
             .onChange(of: searchText) { newValue in
-                Task {
-                    await searchViewModel.getWikiRequest(for: searchText)
-                }
+                searchViewModel.getWikiRequest(for: searchText)
             }
         }
     }

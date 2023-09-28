@@ -8,7 +8,7 @@
 import Foundation
 
 // Struct for the Search Result API
-struct WikipediaSearchResult: Codable {
+struct WikipediaQuerySearch: Codable {
     var query: SearchQuery
 }
 
@@ -20,5 +20,3 @@ struct SearchResult: Identifiable, Codable {
     var id: Int { return UUID().hashValue }
     var title: String
 }
-
-
