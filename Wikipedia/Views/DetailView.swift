@@ -7,8 +7,8 @@
 
 import SwiftUI
 
-struct WikipediaDetailView: View {
-    @Environment(\.colorScheme) var colorScheme
+struct DetailView: View {
+    @AppStorage("isDarkMode") private var darkMode = false
     
     @ObservedObject var detailViewModel = DetailViewModel()
     
@@ -38,7 +38,7 @@ struct WikipediaDetailView: View {
             .onAppear {
                 detailViewModel.getWikiDetailsRequest(entry: entry)
             }.toolbar {
-            Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
+            Image(darkMode ? "wiki-dark" : "wiki-light")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 50, height: 50)
@@ -48,7 +48,7 @@ struct WikipediaDetailView: View {
 
 struct WikipediaDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        WikipediaDetailView(
+        DetailView(
             entry: SearchResult(title: "Sample text"))
     }
 }

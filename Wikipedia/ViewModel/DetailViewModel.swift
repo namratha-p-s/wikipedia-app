@@ -11,8 +11,6 @@ class DetailViewModel: ObservableObject {
     @Published var articleDescriptions: Page? = nil
     @Published var isLoaded = false
     
-    var wikiURL = "https://en.wikipedia.org/w/api.php?"
-    
     func getWikiDetailsRequest(entry: SearchResult) {
         Task {
             if let result = await RequestService.getWikiDetailViewData(entry: entry) {
