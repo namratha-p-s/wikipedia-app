@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct SearchView: View {
-    @AppStorage("isDarkMode") private var darkMode = false
     
     @ObservedObject var searchViewModel = ContentViewModel()
     
@@ -18,12 +17,10 @@ struct SearchView: View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
-                    if searchText == "" {
-                        Image(darkMode ? "wiki-dark" : "wiki-light")
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                    }
+                    Image("wiki-image")
+                        .resizable()
+                        .scaledToFill()
+                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
                     
                     HStack {
                         TextField(
