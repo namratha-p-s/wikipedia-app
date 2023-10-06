@@ -17,10 +17,12 @@ struct SearchView: View {
         NavigationView {
             GeometryReader { geometry in
                 VStack {
-                    Image("wiki-image")
-                        .resizable()
-                        .scaledToFill()
-                        .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    if searchText == "" {
+                        Image("wiki-image")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    }
                     
                     HStack {
                         TextField(
