@@ -9,7 +9,6 @@ import Foundation
 
 class ContentViewModel: ObservableObject {
     @Published var entries = [SearchResult]()
-    var wikiURL = "https://en.wikipedia.org/w/api.php?action=query&format=json"
     
     func getWikiRequest(for searchText: String) {
         if searchText.isEmpty {
@@ -17,13 +16,8 @@ class ContentViewModel: ObservableObject {
             return
         }
         
-        let encodedSearchText = searchText.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        guard let url = URL(string: "\(wikiURL)&list=search&srsearch=\(encodedSearchText)&srlimit=5") else {
-            return
-        }
-        
         Task {
-            if let result = await RequestService.getWikiSearchData(url: url) {
+            if let result = await RequestService.getWikiSearchData(searchText: searchText) {
                 DispatchQueue.main.async {
                     self.entries = result.query.search.map { searchResult in
                         return SearchResult(

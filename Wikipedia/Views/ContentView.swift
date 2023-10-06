@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @StateObject var searchViewModel = ContentViewModel()
+    @ObservedObject var searchViewModel = ContentViewModel()
     @State var searchText = ""
     
     var body: some View {

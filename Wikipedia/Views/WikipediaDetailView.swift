@@ -10,12 +10,11 @@ import SwiftUI
 struct WikipediaDetailView: View {
     @Environment(\.colorScheme) var colorScheme
     
-    @StateObject var detailViewModel = DetailViewModel()
+    @ObservedObject var detailViewModel = DetailViewModel()
     
     @State var entry: SearchResult
     
     var body: some View {
-        ScrollView {
             VStack {
                 if detailViewModel.isLoaded {
                     if detailViewModel.articleDescriptions?.thumbnail != nil {
@@ -38,8 +37,7 @@ struct WikipediaDetailView: View {
             }
             .onAppear {
                 detailViewModel.getWikiDetailsRequest(entry: entry)
-            }
-        }.toolbar {
+            }.toolbar {
             Image(colorScheme == .dark ? "wiki-dark" : "wiki-light")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
