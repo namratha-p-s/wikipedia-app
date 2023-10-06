@@ -16,49 +16,57 @@ struct SearchView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                Image(darkMode ? "wiki-dark" : "wiki-light")
-                    .resizable()
-                    .scaledToFill()
-                    .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
-                
-                HStack {
-                    TextField(
-                        "Enter text to be searched", text: $searchText
-                    )
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
+            GeometryReader { geometry in
+                VStack {
+                    if searchText == "" {
+                        Image(darkMode ? "wiki-dark" : "wiki-light")
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: /*@START_MENU_TOKEN@*/100/*@END_MENU_TOKEN@*/)
+                    }
                     
-                    if !searchText.isEmpty {
+                    HStack {
+                        TextField(
+                            "Enter text to be searched", text: $searchText
+                        )
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                        .padding()
+                        
+                        if !searchText.isEmpty {
+                            Button(action: {
+                                searchText = ""
+                                searchViewModel.entries.removeAll()
+                            }) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.medium)
+                            }
+                            .padding(.trailing)
+                        }
+                        
                         Button(action: {
-                            searchText = ""
-                            searchViewModel.entries.removeAll()
+                            searchViewModel.getWikiRequest(for: searchText)
                         }) {
-                            Image(systemName: "xmark.circle.fill")
+                            Image(systemName: "magnifyingglass")
                                 .imageScale(.medium)
                         }
                         .padding(.trailing)
                     }
                     
-                    Button(action: {
-                        searchViewModel.getWikiRequest(for: searchText)
-                    }) {
-                        Image(systemName: "magnifyingglass")
-                            .imageScale(.medium)
+                    List(searchViewModel.entries) { entry in
+                        NavigationLink(
+                            destination: DetailView(entry: entry)
+                        ) {
+                            CardView(entry: entry, height: geometry.size.height * 0.135)
+                                .frame(height: geometry.size.height * 0.135)
+                        }
                     }
-                    .padding(.trailing)
+                    
+                    Spacer()
                 }
-                
-                List(searchViewModel.entries) { entry in
-                    NavigationLink(
-                        destination: DetailView(entry: entry)
-                    ) {
-                        CardView(entry: entry)
-                    }
+                .scrollDisabled(true)
+                .onChange(of: searchText) { newValue in
+                    searchViewModel.getWikiRequest(for: searchText)
                 }
-            }
-            .onChange(of: searchText) { newValue in
-                searchViewModel.getWikiRequest(for: searchText)
             }
         }
     }
