@@ -10,6 +10,7 @@ import Foundation
 class ContentViewModel: ObservableObject {
     @Published var entries = [SearchResult]()
     
+    // This function will retrieve the top 5 titles associated with the search key input
     func getWikiRequest(for searchText: String) {
         if searchText.isEmpty {
             entries.removeAll()

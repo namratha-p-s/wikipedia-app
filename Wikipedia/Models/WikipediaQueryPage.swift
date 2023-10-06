@@ -7,7 +7,7 @@
 
 import Foundation
 
-// Struct for the desricption of a particular Search Result API
+// Struct for the desricption and image of a particular Search Result API
 struct WikipediaQueryPage: Codable {
     var query: PageQuery
 }

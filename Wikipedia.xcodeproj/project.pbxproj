@@ -19,6 +19,7 @@
 		52B6BBB32AC1E4670032AC00 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52B6BBB22AC1E4670032AC00 /* DetailView.swift */; };
 		52CE1A302ACFC4ED001C1888 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE1A2F2ACFC4ED001C1888 /* SettingsView.swift */; };
 		52CE1A322ACFC4F8001C1888 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE1A312ACFC4F8001C1888 /* SearchView.swift */; };
+		52CE1A342AD06758001C1888 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 52CE1A332AD06758001C1888 /* CardView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +36,7 @@
 		52B6BBB22AC1E4670032AC00 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		52CE1A2F2ACFC4ED001C1888 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		52CE1A312ACFC4F8001C1888 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		52CE1A332AD06758001C1888 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				52B6BBB22AC1E4670032AC00 /* DetailView.swift */,
 				52CE1A2F2ACFC4ED001C1888 /* SettingsView.swift */,
 				52CE1A312ACFC4F8001C1888 /* SearchView.swift */,
+				52CE1A332AD06758001C1888 /* CardView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				524BC7AC2AC558D200DE46FD /* DetailViewModel.swift in Sources */,
 				524BC7A32AC4DDD500DE46FD /* RequestService.swift in Sources */,
 				5294C66C2ABCCE4600D3B25E /* WikipediaApp.swift in Sources */,
+				52CE1A342AD06758001C1888 /* CardView.swift in Sources */,
 				524BC7A02AC4CD4D00DE46FD /* ContentViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

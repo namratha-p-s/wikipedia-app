@@ -53,10 +53,7 @@ struct SearchView: View {
                     NavigationLink(
                         destination: DetailView(entry: entry)
                     ) {
-                        VStack(alignment: .leading) {
-                            Text(entry.title)
-                                .font(.headline)
-                        }
+                        CardView(entry: entry)
                     }
                 }
             }

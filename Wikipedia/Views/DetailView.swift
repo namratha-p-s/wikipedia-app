@@ -15,6 +15,7 @@ struct DetailView: View {
     @State var entry: SearchResult
     
     var body: some View {
+        ScrollView {
             VStack {
                 if detailViewModel.isLoaded {
                     if detailViewModel.articleDescriptions?.thumbnail != nil {
@@ -38,10 +39,11 @@ struct DetailView: View {
             .onAppear {
                 detailViewModel.getWikiDetailsRequest(entry: entry)
             }.toolbar {
-            Image(darkMode ? "wiki-dark" : "wiki-light")
-                .resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(width: 50, height: 50)
+                Image(darkMode ? "wiki-dark" : "wiki-light")
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(width: 50, height: 50)
+            }
         }
     }
 }

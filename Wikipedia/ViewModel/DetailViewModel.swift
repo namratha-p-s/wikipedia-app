@@ -11,6 +11,7 @@ class DetailViewModel: ObservableObject {
     @Published var articleDescriptions: Page? = nil
     @Published var isLoaded = false
     
+    // This function will retrieve the search result for a particular entry
     func getWikiDetailsRequest(entry: SearchResult) {
         Task {
             if let result = await RequestService.getWikiDetailViewData(entry: entry) {
